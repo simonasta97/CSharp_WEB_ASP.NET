@@ -10,10 +10,10 @@ namespace ForumApp.Data.Entities
 
         [Required]
         [MaxLength(TitleMaxLength)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(ContentMaxLength)]
-        public string Content { get; set; }
+        public string Content { get; set; } = null!;
     }
 }

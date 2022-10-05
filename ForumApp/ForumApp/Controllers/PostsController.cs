@@ -2,6 +2,7 @@
 using ForumApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using ForumApp.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp.Controllers
 {
@@ -52,6 +53,37 @@ namespace ForumApp.Controllers
             this.data.Posts.Add(post);
             this.data.SaveChanges();
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var post =  this.data.Posts.Where(p => p.Id == id).Select(p => new PostViewModel()
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Content = p.Content
+            }).FirstOrDefault();
+
+            if (post != null)
+            {
+                return View(post);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Edit(PostViewModel model)
+        {
+            var post =  this.data.Posts.Find(model.Id);
+
+            if (post != null)
+            {
+                post.Title = model.Title;
+                post.Content = model.Content;
+            }
+
+            this.data.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }

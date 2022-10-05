@@ -2,12 +2,8 @@
 
 namespace ForumApp.Models
 {
-    public class PostViewModel
+    public class PostViewModel : PostFormModel
     {
         public int Id { get; set; }
-
-        public string Title { get; set; }
-
-        public string Content { get; set; }
     }
 }
