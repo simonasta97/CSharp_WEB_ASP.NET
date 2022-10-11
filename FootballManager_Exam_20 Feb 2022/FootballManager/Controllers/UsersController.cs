@@ -31,6 +31,7 @@ namespace FootballManager.Controllers
             return View(new { IsAuthenticated = false });
         }
 
+        [HttpPost]
         public Response Login(LoginViewModel model)
         {
             Request.Session.Clear();
