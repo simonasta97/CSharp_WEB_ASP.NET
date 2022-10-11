@@ -12,7 +12,12 @@
 
         public Response Index()
         {
-            return this.View(new { IsAuthenticated = false });
+            if (User.IsAuthenticated)
+            {
+                return Redirect("/Players/All");
+            }
+
+            return this.View(new { IsAuthenticated = User.IsAuthenticated });
         }
     }
 }
