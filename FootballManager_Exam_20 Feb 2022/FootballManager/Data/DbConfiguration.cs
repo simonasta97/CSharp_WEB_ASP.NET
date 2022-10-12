@@ -2,6 +2,6 @@
 {
     public class DbConfiguration
     {
-        public const string ConnectionString = @"Server=.;Database=FootballManager;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public const string ConnectionString = @"Server=DESKTOP-I9R285D\SQLEXPRESS;Database=FootballManager;Trusted_Connection=True;MultipleActiveResultSets=true";
     }
 }

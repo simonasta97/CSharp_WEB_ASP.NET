@@ -14,6 +14,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.UserPlayers = new HashSet<UserPlayer>();
         }
+
         [Key]
         public string Id { get; set; }
 
