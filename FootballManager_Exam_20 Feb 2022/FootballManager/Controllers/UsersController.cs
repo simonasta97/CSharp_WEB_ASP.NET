@@ -28,6 +28,7 @@ namespace FootballManager.Controllers
             {
                 return Redirect("/");
             }
+
             return View(new { IsAuthenticated = false });
         }
 
