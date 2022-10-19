@@ -20,9 +20,6 @@ namespace Watchlist.Data
 
             public const int MaxMovieDirector = 50;
             public const int MinMovieDirector = 5;
-
-            public const int MaxMovieDescription = 5000;
-            public const int MinMovieDescription = 5;
         }
 
         public class Genre

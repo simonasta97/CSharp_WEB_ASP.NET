@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Watchlist.Data;
+using Watchlist.Data.Models;
 using Watchlist.Models.User;
 
 namespace Watchlist.Controllers
@@ -96,7 +96,7 @@ namespace Watchlist.Controllers
                         return Redirect(model.ReturnUrl);
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("All", "Movies");
                 }
             }
 

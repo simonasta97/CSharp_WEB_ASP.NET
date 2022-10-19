@@ -1,4 +1,4 @@
-﻿namespace Watchlist.Data
+﻿namespace Watchlist.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
     using static Watchlist.Data.DataConstants.Genre;

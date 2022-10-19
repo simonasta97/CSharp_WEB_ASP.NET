@@ -1,5 +1,5 @@
-﻿@using Watchlist.Models.Movies
-@model MovieFormModel
+﻿@using Watchlist.Models.Movies;
+@model AddMovieViewModel
 
 @{
     ViewBag.Title = "Add Movie";
@@ -10,35 +10,30 @@
 
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <form>
+        <form method="post">
             <div class="mb-3">
-                <label class="form-label">Title</label>
-                <input class="form-control" aria-required="true" />
+                <label asp-for="@Model.Title" class="form-label">Title</label>
+                <input asp-for="@Model.Title" class="form-control" aria-required="true" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label class="form-label">Director</label>
-                <input class="form-control" aria-required="true" />
+                <label asp-for="@Model.Director" class="form-label">Director</label>
+                <input asp-for="@Model.Director" class="form-control" aria-required="true" />
                 <span asp-validation-for="Director" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label class="form-label">Description</label>
-                <textarea class="form-control" aria-required="true" rows="5"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="@Model.ImageUrl" class="form-label">Image URL</label>
+                <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label class="form-label">Image URL</label>
-                <input class="form-control" aria-required="true" />
-                <span asp-validation-for="Url" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Rating</label>
-                <input class="form-control" value="" />
+                <label asp-for="@Model.Rating" class="form-label">Rating</label>
+                <input asp-for="@Model.Rating" class="form-control" value="" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label class="form-label">Genre</label>
-                <select class="form-control">
+                <label asp-for="@Model.GenreId" class="form-label">Genre</label>
+                <select asp-for="@Model.GenreId" class="form-control">
                     @foreach (var genre in Model.Genres)
                     {
                         <option value="@genre.Id">@genre.Name</option>

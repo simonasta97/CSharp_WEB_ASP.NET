@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Watchlist.Contracts;
 using Watchlist.Data;
 using Watchlist.Data.Common;
+using Watchlist.Data.Models;
+using Watchlist.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 
 var app = builder.Build();
 

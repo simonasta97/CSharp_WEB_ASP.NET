@@ -1,4 +1,4 @@
-﻿namespace Watchlist.Data
+﻿namespace Watchlist.Data.Models
 {
     using Microsoft.AspNetCore.Mvc;
     using System.ComponentModel.DataAnnotations;
@@ -19,17 +19,15 @@
         public string Director { get; set; }
 
         [Required]
-        [MaxLength(MaxMovieDescription)]
-        public string Description { get; set; }
-
-        [Required]
         public string ImageUrl { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Required]
         public decimal Rating { get; set; }
 
         [ForeignKey(nameof(Genre))]
-        public int GenreId { get; set; }
-        public virtual Genre Genre { get; set; }
+        public int? GenreId { get; set; }
+        public virtual Genre? Genre { get; set; }
+
+        public ICollection<UserMovie> UsersMovies { get; set; } = new HashSet<UserMovie>();
     }
 }

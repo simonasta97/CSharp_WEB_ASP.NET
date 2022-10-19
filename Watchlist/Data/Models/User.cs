@@ -1,11 +1,12 @@
-﻿namespace Watchlist.Data
+﻿namespace Watchlist.Data.Models
 {
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
+    using Watchlist.Data.Models;
     using static Watchlist.Data.DataConstants.User;
 
     public class User : IdentityUser
     {
-        public ICollection<Movie> WatchedMovies { get; set; } = new HashSet<Movie>();
+        public ICollection<UserMovie> UserMovie { get; set; } = new HashSet<UserMovie>();
     }
 }

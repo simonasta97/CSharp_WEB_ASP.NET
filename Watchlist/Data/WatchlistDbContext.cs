@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;
+using Watchlist.Data.Models;
 
 namespace Watchlist.Data
 {
@@ -11,8 +12,25 @@ namespace Watchlist.Data
         {
         }
 
+        public DbSet<Movie> Movies { get; set; }
+
+        public DbSet<Genre> Genres { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<UserMovie>()
+                .HasKey(x => new { x.UserId, x.MovieId });
+
+            builder.Entity<User>()
+                .Property(u => u.UserName)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            builder.Entity<User>()
+                .Property(u => u.Email)
+                .HasMaxLength(60)
+                .IsRequired();
+
             builder
                 .Entity<Genre>()
                 .HasData(new Genre()
@@ -43,11 +61,5 @@ namespace Watchlist.Data
 
             base.OnModelCreating(builder);
         }
-
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Movie> Movies { get; set; }
-
-        public DbSet<Genre> Genres { get; set; }
     }
 }

@@ -1,7 +1,5 @@
-﻿@using Watchlist.Models.Movies
-@using Microsoft.AspNetCore.Identity;
-@model AllMoviesQueryModel
-
+﻿@using Watchlist.Models.Movies;
+@model IEnumerable<MovieViewModel>
 
 @{
     ViewBag.Title = "Watched Movies";
@@ -12,20 +10,20 @@
 
 
 <div class="text-center row">
-    @foreach (var movie in Model.Movies)
+    @foreach (var movie in Model)
     {
         <div class="card col-4" style="width: 20rem; ">
             <img class="card-img-top" style="width: 18rem;"
-             src="@movie.Url" alt="Book Image">
+             src="@movie.ImageUrl" alt="Book Image">
             <div class="card-body">
 
                 <h5 class="card-title mt-1">@movie.Title</h5>
                 <p class="mb-0">Director: @movie.Director</p>
                 <p class="mb-0">Rating: @movie.Rating</p>
-                <p>Genre: @movie.GenreId</p>
+                <p>Genre: @movie.Genre</p>
             </div>
 
-            <form class="input-group-sm">
+            <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="RemoveFromCollection" method="post">
                 <input class="fs-6 btn btn-success mb-3 p-2" type="submit" value="Mark as Unwatched" />
             </form>
         </div>
