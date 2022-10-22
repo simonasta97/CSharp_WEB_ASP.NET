@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Watchlist.Models.User
+﻿namespace Watchlist.Models.User
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LoginModel
     {
         [Required]

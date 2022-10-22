@@ -7,6 +7,6 @@
 
     public class User : IdentityUser
     {
-        public ICollection<UserMovie> UserMovie { get; set; } = new HashSet<UserMovie>();
+        public ICollection<UserMovie> UsersMovies { get; set; } = new HashSet<UserMovie>();
     }
 }

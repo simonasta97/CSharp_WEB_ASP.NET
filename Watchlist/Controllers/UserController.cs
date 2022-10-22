@@ -6,6 +6,7 @@ using Watchlist.Models.User;
 
 namespace Watchlist.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -23,6 +24,11 @@ namespace Watchlist.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("All", "Movies");
+            }
+
             var model = new RegisterModel();
 
             return View(model);
@@ -50,7 +56,7 @@ namespace Watchlist.Controllers
             {
                 await signInManager.SignInAsync(user, isPersistent: false);
 
-                return RedirectToAction("Login", "User");
+                return RedirectToAction(nameof(Login));
             }
 
             foreach (var item in result.Errors)
@@ -65,6 +71,11 @@ namespace Watchlist.Controllers
         [AllowAnonymous]
         public IActionResult Login(string? returnUrl = null)
         {
+            if (User?.Identity?.IsAuthenticated ?? false)
+            {
+                return RedirectToAction("All", "Movies");
+            }
+
             var model = new LoginModel()
             {
                 ReturnUrl = returnUrl

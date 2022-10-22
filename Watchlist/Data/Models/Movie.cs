@@ -22,6 +22,7 @@
         public string ImageUrl { get; set; }
 
         [Required]
+
         public decimal Rating { get; set; }
 
         [ForeignKey(nameof(Genre))]

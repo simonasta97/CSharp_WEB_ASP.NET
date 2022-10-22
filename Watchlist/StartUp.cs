@@ -23,9 +23,13 @@ builder.Services.AddDefaultIdentity<User>(options =>
 })
     .AddEntityFrameworkStores<WatchlistDbContext>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/User/Login";
+});
+
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 
 var app = builder.Build();
